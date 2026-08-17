@@ -1,0 +1,16 @@
+{
+  "name": "ANTRIV",
+  "short_name": "ANTRIV",
+  "description": "Operational intelligence for real work.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#111313",
+  "theme_color": "#111313",
+  "icons": [
+    {
+      "src": "/antriv-mark.png",
+      "sizes": "1254x1254",
+      "type": "image/png"
+    }
+  ]
+}
