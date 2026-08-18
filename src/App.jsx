@@ -9,10 +9,10 @@ import {
 } from "./ProductionSections.jsx";
 
 const STEPS = [
-  { id: "01", label: "Capture", detail: "Inputs arrive" },
-  { id: "02", label: "Decide", detail: "Rules evaluate" },
-  { id: "03", label: "Act", detail: "Work moves" },
-  { id: "04", label: "Report", detail: "Results surface" },
+  { id: "01", label: "Intake", detail: "WhatsApp + forms" },
+  { id: "02", label: "Qualify", detail: "Rules + AI" },
+  { id: "03", label: "Update", detail: "CRM + tasks" },
+  { id: "04", label: "Handoff", detail: "Human owner" },
 ];
 
 function CorridorScene({ progressRef, reducedMotion }) {
@@ -317,6 +317,9 @@ export function App() {
 
   const activeStep = Math.min(STEPS.length - 1, Math.floor(progress * STEPS.length));
   const openAudit = () => setDialogOpen(true);
+  const scrollToCapabilities = () => {
+    document.getElementById("capabilities")?.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth" });
+  };
 
   return (
     <div className="site-shell">
@@ -326,7 +329,7 @@ export function App() {
         className="scroll-track"
         id="top"
         ref={heroTrackRef}
-        aria-label="ANTRIV operational intelligence experience"
+        aria-label="ANTRIV AI systems for real business workflows"
       >
         <div className="sticky-stage" data-end={progress > 0.89}>
           <CorridorScene progressRef={progressRef} reducedMotion={reducedMotion} />
@@ -335,12 +338,12 @@ export function App() {
 
           <div className="hero-copy">
             <div className="eyebrow-row">
-              <span className="eyebrow">OPERATIONAL INTELLIGENCE</span>
-              <span className="eyebrow-code">UAE / GCC</span>
+              <span className="eyebrow">INTELLIGENT SYSTEMS · BUILT FOR REAL WORK</span>
+              <span className="eyebrow-code">DUBAI / UAE</span>
             </div>
-            <h1>Intelligent systems.<br />Built for real work.</h1>
+            <h1 className="hero-value-heading">AI systems that connect<br />your tools, data, and teams.</h1>
             <p className="hero-lede">
-              We turn fragmented operations into one accountable system — designed around how your team actually works.
+              We design practical workflows around WhatsApp, email, spreadsheets, CRMs and internal tools — reducing repetitive work, missed follow-ups and manual handoffs.
             </p>
             <div className="hero-actions">
               <motion.button
@@ -351,7 +354,7 @@ export function App() {
                 transition={{ type: "spring", stiffness: 360, damping: 24, mass: 0.65 }}
                 onClick={openAudit}
               >
-                Book a workflow audit
+                Book a Workflow Audit
               </motion.button>
               <motion.button
                 className="text-button lift-link"
@@ -359,14 +362,15 @@ export function App() {
                 whileHover={reducedMotion ? undefined : { y: -4, scale: 1.035 }}
                 whileTap={reducedMotion ? undefined : { scale: 0.98 }}
                 transition={{ type: "spring", stiffness: 360, damping: 24, mass: 0.65 }}
-                onClick={() => window.scrollTo({ top: window.innerHeight * 1.45, behavior: reducedMotion ? "auto" : "smooth" })}
+                onClick={scrollToCapabilities}
               >
-                Enter the system <span aria-hidden="true">↓</span>
+                See what we build <span aria-hidden="true">↓</span>
               </motion.button>
             </div>
+            <p className="hero-trustline">Dubai, UAE · Built around your existing tools · Human approval where it matters</p>
           </div>
 
-          <aside className="process-rail" aria-label="Workflow stages">
+          <aside className="process-rail" aria-label="Example lead workflow stages">
             <div className="rail-heading">
               <span>LIVE WORKFLOW</span>
               <span>{String(Math.round(progress * 100)).padStart(2, "0")}%</span>
@@ -389,7 +393,7 @@ export function App() {
 
           <div className="end-state" data-visible={progress > 0.89}>
             <span className="eyebrow">SYSTEM ONLINE</span>
-            <strong>One workflow.<br />Clear ownership.</strong>
+            <strong>Work captured.<br />Next action clear.</strong>
           </div>
         </div>
       </section>
